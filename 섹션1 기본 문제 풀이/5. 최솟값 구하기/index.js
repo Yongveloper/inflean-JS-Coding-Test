@@ -33,3 +33,13 @@ function solution2(arr) {
 
 let arr2 = [5, 7, 4, 3, 2, 9, 11];
 console.log(solution(arr2));
+
+//Math.Min
+function solution3(arr) {
+  let answer = 0;
+  answer = Math.min(...arr);
+  return answer;
+}
+
+let arr3 = [5, 7, 4, 3, 2, 9, 11];
+console.log(solution(arr3));
