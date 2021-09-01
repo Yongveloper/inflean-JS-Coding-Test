@@ -2,11 +2,11 @@ function solution(s) {
   let answer = '';
 
   for (const x of s) {
-    const Upper = x.toUpperCase();
-    if (x === Upper) {
+    const upper = x.toUpperCase();
+    if (x === upper) {
       answer += x;
     } else {
-      answer += Upper;
+      answer += upper;
     }
   }
 
