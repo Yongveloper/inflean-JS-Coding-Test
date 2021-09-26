@@ -1,7 +1,7 @@
 function solution(arr1, arr2) {
   const answer = [];
-  arr1.sort();
-  arr2.sort();
+  arr1.sort((a, b) => a - b);
+  arr2.sort((a, b) => a - b);
   let p1 = 0;
   let p2 = 0;
 
