@@ -1,49 +1,31 @@
-function compareMaps(map1, map2) {
-  if (map1.size !== map2.size) {
-    return false;
-  }
-
-  for (const [key, value] of map1) {
-    if (!map2.has(key) || value !== map2.get(key)) {
-      return false;
-    }
-  }
-  return true;
-}
-
 function solution(s, t) {
   let answer = 0;
   let sH = new Map();
-  let tH = new Map();
 
   for (const x of t) {
-    if (tH.has(x)) {
-      tH.set(x, tH.get(x) + 1);
-    } else {
-      tH.set(x, 1);
-    }
+    sH.set(x, (sH.get(x) || 0) - 1);
   }
 
-  for (let i = 0; i < t.length - 1; i++) {
-    if (sH.has(s[i])) {
-      sH.set(s[i], sH.get(s[i]) + 1);
-    } else {
-      sH.set(s[i], 1);
+  const len = t.length - 1;
+
+  for (let i = 0; i < len; i++) {
+    sH.set(s[i], (sH.get(s[i]) || 0) + 1);
+    if (sH.get(s[i]) === 0) {
+      sH.delete(s[i]);
     }
   }
 
   let lt = 0;
-  for (let rt = t.length - 1; rt < s.length; rt++) {
-    if (sH.has(s[rt])) {
-      sH.set(s[rt], sH.get(s[rt]) + 1);
-    } else {
-      sH.set(s[rt], 1);
-    }
 
-    if (compareMaps(sH, tH)) {
+  for (let rt = len; rt < s.length; rt++) {
+    sH.set(s[rt], (sH.get(s[rt]) || 0) + 1);
+    if (sH.get(s[rt]) === 0) {
+      sH.delete(s[rt]);
+    }
+    if (sH.size === 0) {
       answer++;
     }
-    sH.set(s[lt], sH.get(s[lt]) - 1);
+    sH.set(s[lt], (sH.get(s[lt]) || 0) - 1);
     if (sH.get(s[lt]) === 0) {
       sH.delete(s[lt]);
     }
