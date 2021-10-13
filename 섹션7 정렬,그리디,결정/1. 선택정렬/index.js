@@ -7,8 +7,8 @@ function solution(arr) {
       if (arr[j] < arr[idx]) {
         idx = j;
       }
-      [arr[i], arr[idx]] = [arr[idx], arr[i]];
     }
+    [arr[i], arr[idx]] = [arr[idx], arr[i]];
   }
 
   return answer;
